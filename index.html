@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>简单导航</title>
+  <style>
+    body{
+      margin:0;
+      font-family: Arial,"Microsoft YaHei",sans-serif;
+      background:#f6f7fb;
+      color:#111;
+    }
+    .wrap{
+      max-width:1100px;
+      margin:24px auto;
+      padding:0 16px 40px;
+    }
+    h1{
+      margin:0 0 18px;
+      font-size:18px;
+      font-weight:700;
+    }
+    .section{
+      margin-bottom:26px;
+    }
+    .section-title{
+      font-size:15px;
+      font-weight:700;
+      margin:0 0 12px;
+      padding-left:10px;
+      border-left:4px solid #2563eb;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:14px;
+    }
+    @media (max-width:1000px){
+      .grid{grid-template-columns: repeat(3,1fr);}
+    }
+    @media (max-width:700px){
+      .grid{grid-template-columns: repeat(2,1fr);}
+    }
+    @media (max-width:420px){
+      .grid{grid-template-columns: 1fr;}
+    }
+    .card{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      height:64px;
+      background:#fff;
+      border:1px solid #e5e7eb;
+      border-radius:10px;
+      text-decoration:none;
+      font-size:14px;
+      font-weight:600;
+      color:#1f2937;
+      transition:.15s;
+    }
+    .card:hover{
+      border-color:#c7d2fe;
+      box-shadow:0 8px 20px rgba(0,0,0,.08);
+      transform:translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+  <h1>导航页</h1>
+
+  <div class="section">
+    <div class="section-title">AI</div>
+    <div class="grid">
+      <a class="card" href="https://chatgpt.com" target="_blank">ChatGPT</a>
+      <a class="card" href="https://labs.google/fx/zh/tools/whisk" target="_blank">谷歌做图</a>
+      <a class="card" href="https://www.deepseek.com/" target="_blank">DeepSeek</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">邮箱</div>
+    <div class="grid">
+      <a class="card" href="https://hotmail.com" target="_blank">微软邮箱</a>
+      <a class="card" href="https://gmail.com" target="_blank">谷歌邮箱</a>
+      <a class="card" href="https://protonmail.com" target="_blank">ProtonMail</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">网站工具</div>
+    <div class="grid">
+      <a class="card" href="https://search.google.com/search-console/welcome" target="_blank">谷歌SEO</a>
+      <a class="card" href="https://www.bing.com/webmasters" target="_blank">必应SEO</a>
+      <a class="card" href="https://www.similarweb.com" target="_blank">Similarweb分析</a>
+      <a class="card" href="https://ahrefs.com/zh/free-seo-tools" target="_blank">ahrefs分析</a>	  
+      <a class="card" href="https://brand24.com/" target="_blank">Brand24</a>	  
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">钱包工具</div>
+    <div class="grid">
+      <a class="card" href="https://www.oklink.com" target="_blank">Oklink</a>
+      <a class="card" href="https://blockchair.com" target="_blank">Blockchair</a>
+      <a class="card" href="https://checkcryptoaddress.com/" target="_blank">web3钱包地址标记</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">IP查询</div>
+    <div class="grid">
+      <a class="card" href="https://www.browserscan.net/zh/ipcheck" target="_blank">Browserscan</a>
+      <a class="card" href="https://www.ip2proxy.com/demo#proxyresult" target="_blank">ip2proxy</a>
+      <a class="card" href="https://ip138.com" target="_blank">IP138</a>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-title">工具</div>
+    <div class="grid">
+      <a class="card" href="https://web.baimiaoapp.com" target="_blank">白描</a>
+      <a class="card" href="https://fviainboxes.com" target="_blank">临时邮箱</a>
+      <a class="card" href="https://cn.piliapp.com/time-now/converter/" target="_blank">各国时间</a>
+      <a class="card" href="https://account.live.com/names/manage?mkt=zh-CN&refd=account.microsoft.com&refp=profile&uaid=5683338a2c2c73306b267a18b0248132" target="_blank">微软别名管理</a>
+      <a class="card" href="https://www.toolhelper.cn/Html/Preview" target="_blank">锤子http在线</a>
+      <a class="card" href="https://notepad-plus-plus.org/" target="_blank">Notepad++</a>
+      <a class="card" href="https://pixpin.cn" target="_blank">pixpin截图</a>
+      <a class="card" href="https://github.com/2dust/v2rayNG" target="_blank">V2rayNG</a>
+      <a class="card" href="https://reqable.com/zh-CN/" target="_blank">抓包工具</a>
+      <a class="card" href="https://ceitan.com/" target="_blank">Android照片恢复</a>
+      <a class="card" href="https://rustdesk.com/zh-cn" target="_blank">开源远程软件</a>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-title">chrome插件</div>
+    <div class="grid">
+      <a class="card" href="https://chromewebstore.google.com/detail/bhghoamapcdpbohphigoooaddinpkbai?utm_source=item-share-cb" target="_blank">authenticator</a>
+      <a class="card" href="https://chromewebstore.google.com/detail/dphbcebnfdinmcjnmhhglojgfhegmngc?utm_source=item-share-cb" target="_blank">Note-it Aside</a>
+      <a class="card" href="https://chromewebstore.google.com/detail/moombeodfomdpjnpocobemoiaemednkg?utm_source=item-share-cb" target="_blank">草料二维码</a>
+      <a class="card" href="https://chromewebstore.google.com/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo?utm_source=item-share-cb" target="_blank">篡改猴</a>
+      <a class="card" href="https://chromewebstore.google.com/detail/chjkdlhiakokpljcgekfjajilbigiani?utm_source=item-share-cb" target="_blank">右键搜</a>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-title">2Fa</div>
+    <div class="grid">
+      <a class="card" href="https://www.browserscan.net/zh/2fa" target="_blank">2FA在线</a>
+      <a class="card" href="https://www.browserscan.net/zh/2fa/UKWOLHJD46CGCB4GD2KNAOQRLMQLJAI4" target="_blank">net988988cf</a>
+      <a class="card" href="https://www.browserscan.net/zh/2fa/UJW74JYVDX3LRFLEHIBLNVCGN43AORVA" target="_blank">dyj-gmail</a>
+      <a class="card" href="https://www.browserscan.net/zh/2fa/btdoy57c3ctvz7b6z7q7jg5j4aysmczl" target="_blank">gk-gmail</a>
+      <a class="card" href="https://www.browserscan.net/zh/2fa/pplf73gkgk5zxpeogbjrobu5o2xdnkmn" target="_blank">wdqc-gmail</a>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-title">eSIM</div>
+    <div class="grid">
+      <a class="card" href="https://www.three.com.hk" target="_blank">3</a>
+      <a class="card" href="https://www.esim.gg" target="_blank">乌龟电信</a>
+      <a class="card" href="https://redteago.com" target="_blank">Redteago</a>
+      <a class="card" href="https://www.airalo.com" target="_blank">Airalo</a>
+      <a class="card" href="https://mobimatter.com" target="_blank">mobimatter</a>
+      <a class="card" href="https://www.eskimo.travel" target="_blank">Eskimo</a>
+      <a class="card" href="https://www.esimdb.com" target="_blank">eSIMDB</a>
+    </div>
+  </div>
+    
+  <div class="section">
+    <div class="section-title">域名工具</div>
+    <div class="grid">
+      <a class="card" href="https://www.cloudflare.com" target="_blank">Cloudflare</a>
+      <a class="card" href="https://www.godaddy.com/" target="_blank">Godaddy</a>
+      <a class="card" href="https://www.dynadot.com/zh" target="_blank">Dynadot</a>
+      <a class="card" href="https://who.is" target="_blank">Whois查询</a>
+    </div>
+  </div>
+    
+  <div class="section">
+    <div class="section-title">TG工具</div>
+    <div class="grid">
+      <a class="card" href="https://telegram.org" target="_blank">Telegram</a>
+      <a class="card" href="https://fragment.com" target="_blank">Fragment</a>
+      <a class="card" href="https://getgems.io" target="_blank">Getgems</a>
+      <a class="card" href="https://t.me/feeeIoBot" target="_blank">feeeIoBot</a>
+      <a class="card" href="https://t.me/BotFather" target="_blank">BotFather</a>
+      <a class="card" href="https://t.me/LivegramBot" target="_blank">LivegramBot</a>
+      <a class="card" href="https://t.me/setlanguage/zh-hans-beta" target="_blank">TG中文</a>
+      <a class="card" href="https://my.telegram.org/auth?to=delete" target="_blank">TG注销</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
