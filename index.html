@@ -1,239 +1,320 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>988988.NET</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>988988.NET 导航</title>
+  <meta name="description" content="常用工具与站点导航，支持顶部分类与快速搜索。">
+
   <style>
-    body{
-      margin:0;
-      font-family: Arial,"Microsoft YaHei",sans-serif;
-      background:#f6f7fb;
-      color:#111;
+    body{margin:0;font-family:Arial,"Microsoft YaHei",sans-serif;background:#f6f7fb;color:#111}
+    main{max-width:1100px;margin:20px auto;padding:0 16px}
+    header{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+    h1{font-size:18px;margin:0}
+    input[type=search]{padding:8px 10px;font-size:14px;border:1px solid #ccc;border-radius:6px;min-width:240px}
+
+    /* 顶部分类栏 */
+    nav{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+    .chip{
+      display:inline-flex;align-items:center;gap:6px;
+      padding:6px 10px;border:1px solid #d1d5db;border-radius:999px;
+      background:#fff;color:#111;text-decoration:none;font-size:13px;font-weight:600;
+      cursor:pointer; user-select:none;
     }
-    .wrap{
-      max-width:1100px;
-      margin:24px auto;
-      padding:0 16px 40px;
+    .chip[aria-current="true"]{border-color:#2563eb; box-shadow:0 6px 16px rgba(0,0,0,.08)}
+    .count{font-size:12px;color:#6b7280;font-weight:700}
+
+    section{margin-top:22px}
+    h2{font-size:15px;margin:0 0 10px;border-left:4px solid #2563eb;padding-left:8px}
+    ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    @media(max-width:900px){ul{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:600px){ul{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:420px){ul{grid-template-columns:1fr}}
+
+    a.card{
+      display:flex;align-items:center;justify-content:center;min-height:52px;background:#fff;
+      border:1px solid #e5e7eb;border-radius:8px;text-decoration:none;color:#111;font-weight:600;
+      padding:0 10px;text-align:center;
     }
-    h1{
-      margin:0 0 18px;
-      font-size:18px;
-      font-weight:700;
-    }
-    .section{
-      margin-bottom:26px;
-    }
-    .section-title{
-      font-size:15px;
-      font-weight:700;
-      margin:0 0 12px;
-      padding-left:10px;
-      border-left:4px solid #2563eb;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:14px;
-    }
-    @media (max-width:1000px){
-      .grid{grid-template-columns: repeat(3,1fr);}
-    }
-    @media (max-width:700px){
-      .grid{grid-template-columns: repeat(2,1fr);}
-    }
-    @media (max-width:420px){
-      .grid{grid-template-columns: 1fr;}
-    }
-    .card{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      height:64px;
-      background:#fff;
-      border:1px solid #e5e7eb;
-      border-radius:10px;
-      text-decoration:none;
-      font-size:14px;
-      font-weight:600;
-      color:#1f2937;
-      transition:.15s;
-    }
-    .card:hover{
-      border-color:#c7d2fe;
-      box-shadow:0 8px 20px rgba(0,0,0,.08);
-      transform:translateY(-2px);
-    }
+    a.card:hover{border-color:#93c5fd}
+    footer{margin-top:30px;font-size:12px;color:#6b7280;text-align:center}
+    .hidden{display:none}
   </style>
 </head>
+
 <body>
+<main>
 
-<div class="wrap">
-  <h1>导航页</h1>
+<header>
+  <h1>导航</h1>
+  <input id="search" type="search" placeholder="搜索站点 / 工具 / 关键词…">
+</header>
 
-  <div class="section">
-    <div class="section-title">AI</div>
-    <div class="grid">
-      <a class="card" href="https://chatgpt.com" target="_blank">ChatGPT</a>
-      <a class="card" href="https://labs.google/fx/zh/tools/whisk" target="_blank">谷歌做图</a>
-      <a class="card" href="https://www.deepseek.com/" target="_blank">DeepSeek</a>
-    </div>
-  </div>
+<!-- 顶部分类栏：JS 自动生成 -->
+<nav id="categoryBar" aria-label="分类"></nav>
 
-  <div class="section">
-    <div class="section-title">邮箱</div>
-    <div class="grid">
-      <a class="card" href="https://hotmail.com" target="_blank">微软邮箱</a>
-      <a class="card" href="https://gmail.com" target="_blank">谷歌邮箱</a>
-      <a class="card" href="https://protonmail.com" target="_blank">ProtonMail</a>
-    </div>
-  </div>
+<section>
+  <h2>AI</h2>
+  <ul>
+    <li><a class="card" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">ChatGPT</a></li>
+    <li><a class="card" href="https://labs.google/fx/zh/tools/whisk" target="_blank" rel="noopener noreferrer">谷歌做图</a></li>
+    <li><a class="card" href="https://www.deepseek.com" target="_blank" rel="noopener noreferrer">DeepSeek</a></li>
+  </ul>
+</section>
 
-  <div class="section">
-    <div class="section-title">网站工具</div>
-    <div class="grid">
-      <a class="card" href="https://search.google.com/search-console/welcome" target="_blank">谷歌SEO</a>
-      <a class="card" href="https://www.bing.com/webmasters" target="_blank">必应SEO</a>
-      <a class="card" href="https://www.similarweb.com" target="_blank">Similarweb分析</a>
-      <a class="card" href="https://ahrefs.com/zh/free-seo-tools" target="_blank">ahrefs分析</a>	  
-      <a class="card" href="https://brand24.com/" target="_blank">Brand24</a>	  
-    </div>
-  </div>
+<section>
+  <h2>邮箱</h2>
+  <ul>
+    <li><a class="card" href="https://gmail.com" target="_blank" rel="noopener noreferrer">Gmail</a></li>
+    <li><a class="card" href="https://hotmail.com" target="_blank" rel="noopener noreferrer">Outlook</a></li>
+    <li><a class="card" href="https://protonmail.com" target="_blank" rel="noopener noreferrer">Proton Mail</a></li>
+  </ul>
+</section>
 
-  <div class="section">
-    <div class="section-title">钱包工具</div>
-    <div class="grid">
-      <a class="card" href="https://www.paypal.com" target="_blank">PayPal</a>
-      <a class="card" href="https://t.me/pikabaobot?start=d59c8347-d" target="_blank">虚拟信用卡TG版</a>
-      <a class="card" href="https://www.oklink.com" target="_blank">Oklink</a>
-      <a class="card" href="https://blockchair.com" target="_blank">Blockchair</a>
-      <a class="card" href="https://etherscan.io" target="_blank">Etherscan</a>
-      <a class="card" href="https://tronscan.org" target="_blank">Tronscan</a>
-      <a class="card" href="https://checkcryptoaddress.com/" target="_blank">web3钱包地址标记</a>
-    </div>
-  </div>
+<section>
+  <h2>网站工具</h2>
+  <ul>
+    <li><a class="card" href="https://search.google.com/search-console/welcome" target="_blank" rel="noopener noreferrer">Google SEO</a></li>
+    <li><a class="card" href="https://www.bing.com/webmasters" target="_blank" rel="noopener noreferrer">Bing SEO</a></li>
+    <li><a class="card" href="https://ahrefs.com/zh/free-seo-tools" target="_blank" rel="noopener noreferrer">Ahrefs</a></li>
+    <li><a class="card" href="https://www.similarweb.com" target="_blank" rel="noopener noreferrer">SimilarWeb</a></li>
+    <li><a class="card" href="https://brand24.com" target="_blank" rel="noopener noreferrer">Brand24</a></li>
+  </ul>
+</section>
 
-  <div class="section">
-    <div class="section-title">IP查询</div>
-    <div class="grid">
-      <a class="card" href="https://www.browserscan.net/zh/ipcheck" target="_blank">Browserscan</a>
-      <a class="card" href="https://www.ip2proxy.com/demo#proxyresult" target="_blank">ip2proxy</a>
-      <a class="card" href="https://ip138.com" target="_blank">IP138</a>
-    </div>
-  </div>
-  
-  <div class="section">
-    <div class="section-title">工具</div>
-    <div class="grid">
-      <a class="card" href="https://web.baimiaoapp.com" target="_blank">白描</a>
-      <a class="card" href="https://cli.im" target="_blank">二维码生成</a>
-      <a class="card" href="https://fviainboxes.com" target="_blank">临时邮箱</a>
-      <a class="card" href="https://cn.piliapp.com/time-now/converter" target="_blank">各国时间</a>
-      <a class="card" href="https://account.live.com/names/manage?mkt=zh-CN&refd=account.microsoft.com&refp=profile&uaid=5683338a2c2c73306b267a18b0248132" target="_blank">微软别名管理</a>
-      <a class="card" href="https://www.toolhelper.cn/Html/Preview" target="_blank">锤子http在线</a>
-      <a class="card" href="https://notepad-plus-plus.org/" target="_blank">Notepad++</a>
-      <a class="card" href="https://pixpin.cn" target="_blank">pixpin截图</a>
-      <a class="card" href="https://github.com/2dust/v2rayNG" target="_blank">V2rayNG</a>
-      <a class="card" href="https://reqable.com/zh-CN/" target="_blank">抓包工具</a>
-      <a class="card" href="https://ceitan.com/" target="_blank">Android照片恢复</a>
-      <a class="card" href="https://www.wps.cn" target="_blank">WPS</a>
-      <a class="card" href="https://pc.meitu.com/download" target="_blank">美图秀秀</a>
-      <a class="card" href="https://fanyi.youdao.com/download-multi" target="_blank">有道翻译</a>
-      <a class="card" href="https://z.weixin.qq.com/" target="_blank">微信输入法</a>
-      <a class="card" href="https://www.7-zip.org" target="_blank">7z</a>
-      <a class="card" href="https://www.bitbrowser.net" target="_blank">比特浏览器</a>
-      <a class="card" href="https://www.ldmnq.com" target="_blank">雷电模拟器</a>
-      <a class="card" href="https://www.wepe.com.cn" target="_blank">微PE</a>
-      <a class="card" href="https://www.xunlei.com" target="_blank">迅雷</a>
-      <a class="card" href="https://www.teamviewer.com" target="_blank">Teamviewer</a>
-      <a class="card" href="https://msdn.itellyou.cn" target="_blank">MSDN</a>
-      <a class="card" href="https://rustdesk.com/zh-cn" target="_blank">开源远程软件</a>
-    </div>
-  </div>
-  
-  <div class="section">
-    <div class="section-title">浏览器</div>
-    <div class="grid">
-      <a class="card" href="https://www.google.com/intl/zh-CN/chrome/" target="_blank">chrome</a>
-      <a class="card" href="https://www.opera.com" target="_blank">opera</a>
-      <a class="card" href="https://www.firefox.com" target="_blank">Firefox</a>
-      <a class="card" href="https://www.microsoft.com/zh-cn/edge" target="_blank">edge</a>
-    </div>
-  </div>   
+<section>
+  <h2>钱包工具</h2>
+  <ul>
+    <li><a class="card" href="https://www.paypal.com" target="_blank" rel="noopener noreferrer">PayPal</a></li>
+    <li><a class="card" href="https://t.me/pikabaobot?start=d59c8347-d" target="_blank" rel="noopener noreferrer">虚拟信用卡TG版</a></li>
+    <li><a class="card" href="https://www.oklink.com" target="_blank" rel="noopener noreferrer">Oklink</a></li>
+    <li><a class="card" href="https://blockchair.com" target="_blank" rel="noopener noreferrer">Blockchair</a></li>
+    <li><a class="card" href="https://etherscan.io" target="_blank" rel="noopener noreferrer">Etherscan</a></li>
+    <li><a class="card" href="https://tronscan.org" target="_blank" rel="noopener noreferrer">Tronscan</a></li>
+    <li><a class="card" href="https://checkcryptoaddress.com" target="_blank" rel="noopener noreferrer">web3钱包地址标记</a></li>
+  </ul>
+</section>
 
-  <div class="section">
-    <div class="section-title">chrome插件</div>
-    <div class="grid">
-      <a class="card" href="https://chromewebstore.google.com/detail/bhghoamapcdpbohphigoooaddinpkbai?utm_source=item-share-cb" target="_blank">authenticator</a>
-      <a class="card" href="https://chromewebstore.google.com/detail/dphbcebnfdinmcjnmhhglojgfhegmngc?utm_source=item-share-cb" target="_blank">Note-it Aside</a>
-      <a class="card" href="https://chromewebstore.google.com/detail/moombeodfomdpjnpocobemoiaemednkg?utm_source=item-share-cb" target="_blank">草料二维码</a>
-      <a class="card" href="https://chromewebstore.google.com/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo?utm_source=item-share-cb" target="_blank">篡改猴</a>
-      <a class="card" href="https://chromewebstore.google.com/detail/chjkdlhiakokpljcgekfjajilbigiani?utm_source=item-share-cb" target="_blank">右键搜</a>
-    </div>
-  </div>
-  
-  <div class="section">
-    <div class="section-title">2Fa</div>
-    <div class="grid">
-      <a class="card" href="https://www.browserscan.net/zh/2fa" target="_blank">2Fa在线</a>
-      <a class="card" href="https://www.browserscan.net/zh/2fa/UKWOLHJD46CGCB4GD2KNAOQRLMQLJAI4" target="_blank">穿越火线</a>
-      <a class="card" href="https://www.browserscan.net/zh/2fa/UJW74JYVDX3LRFLEHIBLNVCGN43AORVA" target="_blank">大赢家</a>
-      <a class="card" href="https://www.browserscan.net/zh/2fa/btdoy57c3ctvz7b6z7q7jg5j4aysmczl" target="_blank">怪咖</a>
-      <a class="card" href="https://www.browserscan.net/zh/2fa/pplf73gkgk5zxpeogbjrobu5o2xdnkmn" target="_blank">青春</a>
-      <a class="card" href="https://www.browserscan.net/zh/2fa/e5yvoujf6sqmzlk7" target="_blank">巨硬</a>
-      <a class="card" href="https://www.browserscan.net/zh/2fa/DPPXL25HRF2JHRDE" target="_blank">管理员</a>
-    </div>
-  </div>
-  
-  <div class="section">
-    <div class="section-title">eSIM</div>
-    <div class="grid">
-      <a class="card" href="https://www.three.com.hk" target="_blank">3</a>
-      <a class="card" href="https://www.esim.gg" target="_blank">乌龟电信</a>
-      <a class="card" href="https://redteago.com" target="_blank">Redteago</a>
-      <a class="card" href="https://www.airalo.com" target="_blank">Airalo</a>
-      <a class="card" href="https://mobimatter.com" target="_blank">mobimatter</a>
-      <a class="card" href="https://www.eskimo.travel" target="_blank">Eskimo</a>
-      <a class="card" href="https://www.esimdb.com" target="_blank">eSIMDB</a>
-    </div>
-  </div>
-    
-  <div class="section">
-    <div class="section-title">域名工具</div>
-    <div class="grid">
-      <a class="card" href="https://www.cloudflare.com" target="_blank">Cloudflare</a>
-      <a class="card" href="https://www.godaddy.com/" target="_blank">Godaddy</a>
-      <a class="card" href="https://www.dynadot.com/zh" target="_blank">Dynadot</a>
-      <a class="card" href="https://who.is" target="_blank">Whois查询</a>
-    </div>
-  </div>
-    
-  <div class="section">
-    <div class="section-title">TG工具</div>
-    <div class="grid">
-      <a class="card" href="https://telegram.org" target="_blank">Telegram</a>
-      <a class="card" href="https://tonkeeper.com" target="_blank">Tonkeeper</a>
-      <a class="card" href="https://fragment.com" target="_blank">Fragment</a>
-      <a class="card" href="https://getgems.io" target="_blank">Getgems</a>
-      <a class="card" href="https://t.me/feeeIoBot" target="_blank">feeeIoBot</a>
-      <a class="card" href="https://t.me/BotFather" target="_blank">BotFather</a>
-      <a class="card" href="https://t.me/LivegramBot" target="_blank">LivegramBot</a>
-      <a class="card" href="https://t.me/setlanguage/zh-hans-beta" target="_blank">TG中文</a>
-      <a class="card" href="https://my.telegram.org/auth?to=delete" target="_blank">TG注销</a>
-    </div>
-  </div>
-</div>
+<section>
+  <h2>IP查询</h2>
+  <ul>
+    <li><a class="card" href="https://www.browserscan.net/zh/ipcheck" target="_blank" rel="noopener noreferrer">Browserscan</a></li>
+    <li><a class="card" href="https://www.ip2proxy.com/demo#proxyresult" target="_blank" rel="noopener noreferrer">ip2proxy</a></li>
+    <li><a class="card" href="https://ip138.com" target="_blank" rel="noopener noreferrer">IP138</a></li>
+  </ul>
+</section>
+
+<section>
+  <h2>工具</h2>
+  <ul>
+    <li><a class="card" href="https://web.baimiaoapp.com" target="_blank" rel="noopener noreferrer">白描</a></li>
+    <li><a class="card" href="https://cli.im" target="_blank" rel="noopener noreferrer">二维码生成</a></li>
+    <li><a class="card" href="https://fviainboxes.com" target="_blank" rel="noopener noreferrer">临时邮箱</a></li>
+    <li><a class="card" href="https://cn.piliapp.com/time-now/converter" target="_blank" rel="noopener noreferrer">各国时间</a></li>
+    <li><a class="card" href="https://account.live.com/names/manage?mkt=zh-CN&refd=account.microsoft.com&refp=profile&uaid=5683338a2c2c73306b267a18b0248132" target="_blank" rel="noopener noreferrer">微软别名管理</a></li>
+    <li><a class="card" href="https://www.toolhelper.cn/Html/Preview" target="_blank" rel="noopener noreferrer">锤子http在线</a></li>
+    <li><a class="card" href="https://notepad-plus-plus.org" target="_blank" rel="noopener noreferrer">Notepad++</a></li>
+    <li><a class="card" href="https://pixpin.cn" target="_blank" rel="noopener noreferrer">Pixpin</a></li>
+    <li><a class="card" href="https://github.com/2dust/v2rayNG" target="_blank" rel="noopener noreferrer">V2rayNG</a></li>
+    <li><a class="card" href="https://reqable.com/zh-CN/" target="_blank" rel="noopener noreferrer">Reqable</a></li>
+    <li><a class="card" href="https://ceitan.com" target="_blank" rel="noopener noreferrer">Android照片恢复</a></li>
+    <li><a class="card" href="https://www.wps.cn"" target="_blank" rel="noopener noreferrer">WPS Office</a></li>
+    <li><a class="card" href="https://pc.meitu.com/download" target="_blank" rel="noopener noreferrer">美图秀秀</a></li>
+    <li><a class="card" href="https://fanyi.youdao.com/download-multi" target="_blank" rel="noopener noreferrer">有道翻译</a></li>
+    <li><a class="card" href="https://z.weixin.qq.com" target="_blank" rel="noopener noreferrer">微信输入法</a></li>
+    <li><a class="card" href="https://www.7-zip.org" target="_blank" rel="noopener noreferrer">7Z</a></li>
+    <li><a class="card" href="https://www.bitbrowser.net" target="_blank" rel="noopener noreferrer">比特浏览器</a></li>
+    <li><a class="card" href="https://www.ldmnq.com" target="_blank" rel="noopener noreferrer">雷电模拟器</a></li>
+    <li><a class="card" href="https://www.wepe.com.cn" target="_blank" rel="noopener noreferrer">微PE</a></li>
+    <li><a class="card" href="https://www.xunlei.com" target="_blank" rel="noopener noreferrer">迅雷</a></li>
+    <li><a class="card" href="https://msdn.itellyou.cn" target="_blank" rel="noopener noreferrer">MSDN</a></li>
+    <li><a class="card" href="https://www.teamviewer.com" target="_blank" rel="noopener noreferrer">Teamviewer</a></li>
+    <li><a class="card" href="https://rustdesk.com/zh-cn" target="_blank" rel="noopener noreferrer">Rustdesk</a></li>
+  </ul>
+</section>
+
+<section>
+  <h2>浏览器</h2>
+  <ul>
+    <li><a class="card" href="https://www.google.com/intl/zh-CN/chrome/" target="_blank" rel="noopener noreferrer">chrome</a></li>
+    <li><a class="card" href="https://www.opera.com" target="_blank" rel="noopener noreferrer">opera</a></li>
+    <li><a class="card" href="https://www.firefox.com" target="_blank" rel="noopener noreferrer">Firefox</a></li>
+    <li><a class="card" href="https://www.microsoft.com/zh-cn/edge" target="_blank" rel="noopener noreferrer">edge</a></li>
+  </ul>
+</section>
+
+<section>
+  <h2>chrome插件</h2>
+  <ul>
+    <li><a class="card" href="https://chromewebstore.google.com/detail/bhghoamapcdpbohphigoooaddinpkbai?utm_source=item-share-cb" target="_blank" rel="noopener noreferrer">authenticator</a></li>
+    <li><a class="card" href="https://chromewebstore.google.com/detail/dphbcebnfdinmcjnmhhglojgfhegmngc?utm_source=item-share-cb" target="_blank" rel="noopener noreferrer">Note-it Aside</a></li>
+    <li><a class="card" href="https://chromewebstore.google.com/detail/moombeodfomdpjnpocobemoiaemednkg?utm_source=item-share-cb" target="_blank" rel="noopener noreferrer">草料二维码</a></li>
+    <li><a class="card" href="https://chromewebstore.google.com/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo?utm_source=item-share-cb" target="_blank" rel="noopener noreferrer">篡改猴</a></li>
+    <li><a class="card" href="https://chromewebstore.google.com/detail/chjkdlhiakokpljcgekfjajilbigiani?utm_source=item-share-cb" target="_blank" rel="noopener noreferrer">右键搜</a></li>
+  </ul>
+</section>
+
+<section>
+  <h2>2Fa</h2>
+  <ul>
+    <li><a class="card" href="https://www.browserscan.net/zh/2fa" target="_blank" rel="noopener noreferrer">2Fa在线</a></li>
+    <li><a class="card" href="https://www.browserscan.net/zh/2fa/UKWOLHJD46CGCB4GD2KNAOQRLMQLJAI4" target="_blank" rel="noopener noreferrer">穿越火线</a></li>
+    <li><a class="card" href="https://www.browserscan.net/zh/2fa/UJW74JYVDX3LRFLEHIBLNVCGN43AORVA" target="_blank" rel="noopener noreferrer">大赢家</a></li>
+    <li><a class="card" href="https://www.browserscan.net/zh/2fa/btdoy57c3ctvz7b6z7q7jg5j4aysmczl" target="_blank" rel="noopener noreferrer">怪咖</a></li>
+    <li><a class="card" href="https://www.browserscan.net/zh/2fa/pplf73gkgk5zxpeogbjrobu5o2xdnkmn" target="_blank" rel="noopener noreferrer">青春</a></li>
+    <li><a class="card" href="https://www.browserscan.net/zh/2fa/e5yvoujf6sqmzlk7" target="_blank" rel="noopener noreferrer">巨硬</a></li>
+    <li><a class="card" href="https://www.browserscan.net/zh/2fa/DPPXL25HRF2JHRDE" target="_blank" rel="noopener noreferrer">管理员</a></li>
+  </ul>
+</section>
+
+<section>
+  <h2>eSIM</h2>
+  <ul>
+    <li><a class="card" href="https://www.three.com.hk" target="_blank" rel="noopener noreferrer">3</a></li>
+    <li><a class="card" href="https://www.esim.gg" target="_blank" rel="noopener noreferrer">乌龟电信</a></li>
+    <li><a class="card" href="https://redteago.com" target="_blank" rel="noopener noreferrer">Redteago</a></li>
+    <li><a class="card" href="https://www.airalo.com" target="_blank" rel="noopener noreferrer">Airalo</a></li>
+    <li><a class="card" href="https://mobimatter.com" target="_blank" rel="noopener noreferrer">Mobimatter</a></li>
+    <li><a class="card" href="https://www.eskimo.travel" target="_blank" rel="noopener noreferrer">Eskimo</a></li>
+    <li><a class="card" href="https://www.esimdb.com" target="_blank" rel="noopener noreferrer">eSIMDB</a></li>
+  </ul>
+</section>
+
+<section>
+  <h2>域名工具</h2>
+  <ul>
+    <li><a class="card" href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare</a></li>
+    <li><a class="card" href="https://www.godaddy.com" target="_blank" rel="noopener noreferrer">Godaddy</a></li>
+    <li><a class="card" href="https://www.dynadot.com" target="_blank" rel="noopener noreferrer">Dynadot</a></li>
+    <li><a class="card" href="https://who.is" target="_blank" rel="noopener noreferrer">Whois查询</a></li>
+  </ul>
+</section>
+
+<section>
+  <h2>TG工具</h2>
+  <ul>
+    <li><a class="card" href="https://telegram.org" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+    <li><a class="card" href="https://tonkeeper.com" target="_blank" rel="noopener noreferrer">Tonkeeper</a></li>
+    <li><a class="card" href="https://fragment.com" target="_blank" rel="noopener noreferrer">Fragment</a></li>
+    <li><a class="card" href="https://getgems.io" target="_blank" rel="noopener noreferrer">Getgems</a></li>
+    <li><a class="card" href="https://t.me/feeeIoBot" target="_blank" rel="noopener noreferrer">feeeIoBot</a></li>
+    <li><a class="card" href="https://t.me/BotFather" target="_blank" rel="noopener noreferrer">BotFather</a></li>
+    <li><a class="card" href="https://t.me/LivegramBot" target="_blank" rel="noopener noreferrer">LivegramBot</a></li>
+    <li><a class="card" href="https://t.me/setlanguage/zh-hans-beta" target="_blank" rel="noopener noreferrer">TG中文</a></li>
+    <li><a class="card" href="https://my.telegram.org/auth?to=delete" target="_blank" rel="noopener noreferrer">TG注销</a></li>
+  </ul>
+</section>
+
+<footer>© 988988.NET</footer>
+
+</main>
+
+<script>
+(function () {
+  const input = document.getElementById('search');
+  const sections = Array.from(document.querySelectorAll('section'));
+  const bar = document.getElementById('categoryBar');
+
+  // 给每个 section 设置一个稳定 id（用于分类定位/过滤）
+  sections.forEach((sec, idx) => {
+    const title = sec.querySelector('h2')?.innerText?.trim() || ('分类' + (idx + 1));
+    const id = 'cat-' + title.replace(/\s+/g,'-').replace(/[^\w\u4e00-\u9fa5-]/g,'');
+    sec.dataset.cat = title;
+    sec.id = sec.id || id;
+  });
+
+  // 构建顶部分类 chips（自动读取所有 section）
+  function buildCategoryBar() {
+    const totalLinks = document.querySelectorAll('section a.card').length;
+    const allBtn = document.createElement('button');
+    allBtn.className = 'chip';
+    allBtn.type = 'button';
+    allBtn.dataset.cat = 'ALL';
+    allBtn.innerHTML = '全部 <span class="count">(' + totalLinks + ')</span>';
+    bar.appendChild(allBtn);
+
+    sections.forEach(sec => {
+      const cat = sec.dataset.cat;
+      const count = sec.querySelectorAll('a.card').length;
+
+      const btn = document.createElement('button');
+      btn.className = 'chip';
+      btn.type = 'button';
+      btn.dataset.cat = cat;
+      btn.innerHTML = cat + ' <span class="count">(' + count + ')</span>';
+      bar.appendChild(btn);
+    });
+
+    setActiveCat('ALL');
+  }
+
+  function setActiveCat(cat) {
+    bar.querySelectorAll('.chip').forEach(b => {
+      b.setAttribute('aria-current', String(b.dataset.cat === cat));
+    });
+  }
+
+  // 分类过滤：仅在“没有搜索词”时生效；有搜索词时，以搜索过滤为准
+  function filterByCategory(cat) {
+    const q = input.value.trim();
+    if (q) return; // 搜索优先
+
+    setActiveCat(cat);
+
+    sections.forEach(sec => {
+      const match = (cat === 'ALL') || (sec.dataset.cat === cat);
+      sec.classList.toggle('hidden', !match);
+    });
+
+    // 选中具体分类时，滚动到该分类
+    if (cat !== 'ALL') {
+      const target = sections.find(s => s.dataset.cat === cat);
+      if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  }
+
+  // 搜索过滤（按：链接文字 / URL / 分类标题）
+  function filterBySearch() {
+    const q = input.value.trim().toLowerCase();
+
+    // 有搜索词：自动把分类设置为“全部”，并按搜索过滤
+    if (q) setActiveCat('ALL');
+
+    sections.forEach(section => {
+      let sectionMatch = false;
+      const title = section.querySelector('h2').innerText.toLowerCase();
+      const links = section.querySelectorAll('a.card');
+
+      links.forEach(link => {
+        const text = link.innerText.toLowerCase();
+        const href = link.href.toLowerCase();
+        const hit = !q || text.includes(q) || href.includes(q) || title.includes(q);
+
+        link.parentElement.classList.toggle('hidden', !hit);
+        if (hit) sectionMatch = true;
+      });
+
+      section.classList.toggle('hidden', q ? !sectionMatch : false);
+    });
+  }
+
+  // 事件绑定
+  bar.addEventListener('click', (e) => {
+    const btn = e.target.closest('.chip');
+    if (!btn) return;
+    filterByCategory(btn.dataset.cat);
+  });
+
+  input.addEventListener('input', () => {
+    filterBySearch();
+    // 清空搜索后，回到“全部”并显示全部
+    if (!input.value.trim()) filterByCategory('ALL');
+  });
+
+  // 初始化
+  buildCategoryBar();
+})();
+</script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
